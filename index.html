@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <meta name="description" content="PiXY is a multi-screen Browser with Bluetooth broadcaster to multiple devices/screens.">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,target-densitydpi=device-dpi">
+  <title>PiXY - multi-screen Browser</title>
+  <link href="infographic.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <link href="console.css" rel="stylesheet">
+  <script src="index.js"></script>
+  <!--script src="require.js"></script>
+  <script src="main.js"></script-->
+</head>
+<body>
+  <div class="view">
+    <div class="header">
+      <div class="socle" onclick=" document.location.href = 'http://visualdatasynthesis.com' ">
+        <div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>PiXY</div>
+          <div></div>
+        </div>
+      </div>
+      <div class="plinth">
+        <div>
+          <div class="tagline">
+            <div>Multi</div>
+            <div>Screen</div>
+            <div>Browser</div>
+          </div>
+            <div class="navbar">
+              <div><a href="https://www.npmjs.com/package/pixy-browser"><img src="./npm.png" width="41" height="16"></a></div>
+              <div><a href='https://play.google.com/store/apps/details?id=pixy.browser&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src="./playstore.png" width="16" height="16"></a></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="texter">
+      <p>
+        PiXY is a Browser that renders HTML pages as bitmaps whose dimensions are not limited by a screen resolution. The bitmap may be broadcast to multiple screens via serial port.
+      </p>
+      <div>
+      <div class="infographic">
+
+        <div class="butterfly">
+  
+            <div>A.</div>
+            <div>
+                <div>B.</div>
+                <div>C.</div>
+            </div>
+        </div>
+
+        <div class="bt">
+          <div class="binary">
+              <div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+              </div>
+          </div>
+          <div>
+            <div class="btri">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="btri">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="btri">
+                <div></div>
+                <div></div>
+            </div>
+          </div>
+          <div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        <div>
+            <div class="phone phone1">
+                <div>
+                    <div></div>
+                </div>
+                <div style="background-image: url(./butterflyb.png);"></div>
+                <div></div>
+            </div>
+            <div style="display: inline-block; margin-right: 5;">
+                <div class="phone">
+                    <div>
+                        <div></div>
+                    </div>
+                    <div style="background-image: url(./butterflya.png);"></div>
+                    <div></div>
+                </div>
+            </div>
+            <div style="display: inline-block;">
+                <div class="phone">
+                    <div>
+                        <div></div>
+                    </div>
+                    <div style="background-image: url(./butterflyc.png?s);"></div>
+                    <div></div>
+                </div>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+      <hr>
+      <div id="pixy_sandbox"></div>
+      <div class="tabselector">
+        <div class="active" onclick="Console.tab(0)">Elements</div>
+        <div onclick="Console.tab(1)">Source</div>
+      </div>
+      <div id="tools" class="tools">
+        <div id="console">
+          <div></div><div></div>        
+        </div>
+        <div style="display:none;">
+          <div id="source"></div>
+        </div>
+      </div>
+      <br>
+      <h3>Quick Start</h3>
+      <h4>Bluetooth Server</h4>
+      <p>PiXY server is a Node.JS process that transmits the web page image to Bluetooth-enabled devices.</p>
+      <p>Install <a href="https://www.npmjs.com/package/pixy-browser">NPM module</a> for Linux:</p>
+      <div class="tools">
+        <div>
+          <div style="width:100%;">
+<pre>
+npm install pixy-browser
+</pre>
+          </div>
+        </div>
+      </div>
+      <h4>Unlimited screen dimensions and crop</h4>
+      <p>Sample Node.JS script to create a virtual screen with dimensions of 1440x1050 pixels. Rendered view of a webpage is shared on two devices.
+        According to crop settings in the sample, device A displays top part of the page and device B the right one.</p>
+      </p>
+      <div class="tools">
+        <div>
+          <div>
+<pre style='color:#000000;'><span style='color:#800000; font-weight:bold; '>const</span> <span style='color:#800080; '>{</span>PixyBrowser<span style='color:#800080; '>}</span> <span style='color:#808030; '>=</span> require<span style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span style='color:#0000e6; '>pixy-browser</span><span style='color:#800000; '>'</span><span style='color:#808030; '>)</span>
+
+<span style='color:#800000; font-weight:bold; '>new</span> PixyBrowser<span style='color:#808030; '>(</span><span style='color:#800080; '>{</span>
+  url<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>http://visualdatasynthesis.com/demo/index.html</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
+  devices<span style='color:#800080; '>:</span> <span style='color:#808030; '>[</span>
+    <span style='color:#800080; '>{</span>
+      top<span style='color:#800080; '>:</span> <span style='color:#008c00; '>50</span><span style='color:#808030; '>,</span>
+      left<span style='color:#800080; '>:</span> <span style='color:#008c00; '>100</span><span style='color:#808030; '>,</span>     <span style='color:#696969; '>// crop of device A</span>
+      bottom<span style='color:#800080; '>:</span> <span style='color:#008c00; '>710</span><span style='color:#808030; '>,</span>   <span style='color:#696969; '>// top side of rendered view</span>
+      right<span style='color:#800080; '>:</span> <span style='color:#008c00; '>1440</span>
+    <span style='color:#800080; '>}</span><span style='color:#808030; '>,</span>
+    <span style='color:#800080; '>{</span>
+      top<span style='color:#800080; '>:</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>,</span>
+      left<span style='color:#800080; '>:</span> <span style='color:#008c00; '>685</span><span style='color:#808030; '>,</span>     <span style='color:#696969; '>// crop of device B</span>
+      bottom<span style='color:#800080; '>:</span> <span style='color:#008c00; '>1050</span><span style='color:#808030; '>,</span>  <span style='color:#696969; '>// right side of rendered view</span>
+      right<span style='color:#800080; '>:</span> <span style='color:#008c00; '>1220</span>
+    <span style='color:#800080; '>}</span>
+  <span style='color:#808030; '>]</span><span style='color:#808030; '>,</span>
+  height<span style='color:#800080; '>:</span><span style='color:#008c00; '>1050</span><span style='color:#808030; '>,</span>       <span style='color:#696969; '>// window.screen.height</span>
+  width<span style='color:#800080; '>:</span><span style='color:#008c00; '>1400</span>         <span style='color:#696969; '>// window.screen.width</span>
+<span style='color:#800080; '>}</span><span style='color:#808030; '>)</span>
+</pre>
+      </div>
+        </div>
+      </div>
+      <h5>index.html</h5>
+      <div class="tools">
+        <div>
+          <div><pre style='color:#000000;background:#ffffff;'><span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>HTML</span><span style='color:#a65700; '>></span>
+  <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>HEAD</span><span style='color:#a65700; '>></span>
+  <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>HEAD</span><span style='color:#a65700; '>></span>
+  <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>BODY</span><span style='color:#a65700; '>></span>
+    <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>IMG</span><span style='color:#274796; '> </span><span style='color:#074726; '>src</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"./demo/1400x1050.json"</span><span style='color:#274796; '> </span><span style='color:#074726; '>height</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"1400"</span><span style='color:#274796; '> </span><span style='color:#074726; '>width</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"1050"</span><span style='color:#a65700; '>></span><span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>IMG</span><span style='color:#a65700; '>></span>
+  <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>BODY</span><span style='color:#a65700; '>></span>
+<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>HTML</span><span style='color:#a65700; '>></span>
+</pre>
+<!--Created using ToHtml.com on 2020-05-04 11:46:38 UTC -->
+          </div>
+        </div>
+      </div>      
+      <h4>Android APK</h4>
+      <p>Get PiXY app for Android from <a href="https://play.google.com/store/apps/details?id=pixy.browser&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">Google PlayStore</a></p>
+      <div class="scrshot">
+        <div>
+          <div>
+              <img src="screen.jpg" width="300" height="650" alt="PiXY Browser Android App">
+          </div>
+        </div>
+      </div>
+      
+      <h4>Cropped views</h4>
+      <p>Use Android App to select Bluetooth connection and device crop then press START. Example of cropped view on two Android devices:</p>
+      <h5>Device A</h5>
+      <p>Top part of page</p>
+      <div class="dims">
+        <div>
+          <div>Top</div><div>50</div>
+        </div>
+        <div>
+          <div>Left</div><div>100</div>
+        </div>
+        <div>
+          <div>Bottom</div><div>1050</div>
+        </div>
+        <div>
+          <div>Right</div><div>1440</div>
+        </div>
+      </div>
+      <div class="scrshot">
+        <div>
+          <div>
+            <img src="devicea.jpg" width="502" height="238" alt="Android device 1 display">
+          </div>
+        </div>
+      </div>
+      
+      <h5>Device B</h5>
+      <p>Right part of page</p>
+      <div class="dims">
+        <div>
+          <div>Top</div><div>0</div>
+        </div>
+        <div>
+          <div>Left</div><div>685</div>
+        </div>
+        <div>
+          <div>Bottom</div><div>1050</div>
+        </div>
+        <div>
+          <div>Right</div><div>1220</div>
+        </div>
+      </div>
+      <div class="scrshot">
+        <div>
+          <div>
+            <img src="deviceb.jpg" width="356" height="772" alt="Device B display">
+          </div>
+        </div>
+      </div>
+      
+      <h4>PiXY in client Browser</h4>
+      <div class="tools">
+        <div>
+          <div><pre style='color:#000000;'><span style='color:#800000; font-weight:bold; '>var</span> callback <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>{</span><span style='color:#800000; font-weight:bold; '>alert</span><span style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span style='color:#0000e6; '>PiXY loaded</span><span style='color:#800000; '>'</span><span style='color:#808030; '>)</span><span style='color:#800080; '>}</span><span style='color:#808030; '>,</span>
+    container <span style='color:#808030; '>=</span> document<span style='color:#808030; '>.</span>getElementById<span style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span style='color:#0000e6; '>id</span><span style='color:#800000; '>'</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span>
+    url <span style='color:#808030; '>=</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>http://visualdatasynthesis.com.com/static.html</span><span style='color:#800000; '>'</span>
+
+<span style='color:#800000; font-weight:bold; '>var</span> pixy <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> PixyBrowser<span style='color:#808030; '>(</span><span style='color:#800080; '>{</span>
+    callback<span style='color:#800080; '>:</span> callback<span style='color:#808030; '>,</span>       <span style='color:#696969; '>// callback function</span>
+    container<span style='color:#800080; '>:</span> container<span style='color:#808030; '>,</span>     <span style='color:#696969; '>// container DOM element</span>
+    url<span style='color:#800080; '>:</span> url<span style='color:#808030; '>,</span>                 <span style='color:#696969; '>// webpage URL</span>
+    type<span style='color:#800080; '>:</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>matrix|canvas</span><span style='color:#800000; '>"</span><span style='color:#808030; '>,</span>    <span style='color:#696969; '>// use canvas for pages with</span>
+                              <span style='color:#696969; '>// high screen resolution</span>
+    height<span style='color:#800080; '>:</span> <span style='color:#008c00; '>240</span><span style='color:#808030; '>,</span>              <span style='color:#696969; '>// height in pixels</span>
+    width<span style='color:#800080; '>:</span> <span style='color:#008c00; '>360</span>                <span style='color:#696969; '>// width in pixels</span>
+<span style='color:#800080; '>}</span><span style='color:#808030; '>)</span>
+                                  
+<span style='color:#696969; '>// when width and height are omitted PiXY renders</span>
+<span style='color:#696969; '>// the webpage in client Browser as plain HTML</span>
+<span style='color:#696969; '>// with container element as root of HTML tree</span>
+
+<span style='color:#696969; '>// Zoom method:</span>
+<span style='color:#800000; font-weight:bold; '>var</span> zoom <span style='color:#808030; '>=</span> <span style='color:#008000; '>1.5</span>
+pixy<span style='color:#808030; '>.</span>zoom<span style='color:#808030; '>(</span> zoom <span style='color:#808030; '>)</span>             <span style='color:#696969; '>// floating point number</span>
+</pre>
+        <!--Created using ToHtml.com on 2020-04-26 08:35:14 UTC -->
+
+                  </div>
+        </div>
+      </div>
+      <hr>
+      <p>PiXY supports basic HTML mark-up. Refer to <a href="http://visualdatasynthesis.com/static.html">example 1</a> and <a href="http://visualdatasynthesis.com/dynamic.html">example 2</a> for information and come back to this site for frequent updates.</p>
+      <p>External publication: <a href="http://highscalability.com/blog/2017/2/8/in-memory-nosql-dbms-client-in-big-data-cluster.html">High Scalability</a></p>
+      <p>Last update: May 2020</p>
+      <br><br>
+      <div>
+        <a href='https://play.google.com/store/apps/details?id=pixy.browser&hl=en&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/ width="165" height="64"></a>
+      </div>
+      <div style="padding-left: 11px;">
+        <a href="https://www.npmjs.com/package/pixy-browser"><img src="./npm.png" width="142" height="50"></a>
+      </div>
+      <br>
+      <br><br>
+    </div>
+  </div>
+  <script>
+    new PixyBrowser( {
+      container: document.getElementById( 'pixy_sandbox' ),
+      url:'./demo/cli.html'
+    } )
+  </script>
+
+</body>
+</html>

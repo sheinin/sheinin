@@ -1,0 +1,83 @@
+<HTML>
+  <HEAD>
+    <STYLE>
+      .active {
+        background-color: #dcf0ec;
+        color:#5c6463;
+      }
+      .header {
+        background-color: rgb(37, 104, 100);
+        color: rgb(233, 240, 228);
+        font-family: small;
+        margin-bottom:2px;
+        padding: 3px;
+        height: 10px;
+        width: 360px;
+      }
+      .img {
+        padding-left:2px;
+      }
+      .inline {
+        display:inline-block;
+      }
+      .menu {
+        background-color: #5c6463;
+        border-bottom: 2px solid #252b29;
+        color: #dcf0ec;
+        font-family: small;
+        height: 14px;
+        padding-left: 2px;
+        padding-top: 4px;
+        width: 56px;
+      }
+      .copy {
+        background-color: rgb(168, 194, 128);
+        color: #073516;
+        font-family: small;
+        height: 42px;
+        padding-left: 2px;
+        padding-top: 60px;
+        width: 56px;
+      }
+    </STYLE>
+    <SCRIPT>
+      var that = window.pixy || this,
+          activeDiv = 'main'
+      function click(id){
+        that.document.getElementById(activeDiv).className = 'menu'
+        activeDiv = id
+        that.document.getElementById(activeDiv).className = 'menu active'
+        that.document.getElementById('image').src = './demo/'+id + '_300x225.json'
+      }
+    </SCRIPT>
+  </HEAD>
+  <BODY>
+    <DIV class="header">PiXY Browser DEMO</DIV>
+    <DIV class="inline">
+      <DIV class="menu active" onclick="click('main')" id="main">
+        Main
+      </DIV>
+      <DIV class="menu" onclick="click('about')" id="about">
+        About
+      </DIV>
+      <DIV class="menu" onclick="click('android')" id="android">
+        Android
+      </DIV>
+      <DIV class="menu" onclick="click('browser')" id="browser">
+        Browser
+      </DIV>
+      <DIV class="menu" onclick="click('bluetooth')" id="bluetooth">
+        Bluetooth
+      </DIV>
+      <DIV class="menu" onclick="click('broadcast')" id="broadcast">
+        Broadcast
+      </DIV>
+      <DIV class="copy">
+        js2dx.com
+      </DIV>
+    </DIV>
+    <DIV class="inline img">
+      <IMG src="./demo/main_300x225.json" height="225" width="300" id="image"></IMG>
+    </DIV>
+  </BODY>
+</HTML>

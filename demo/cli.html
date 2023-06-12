@@ -1,0 +1,81 @@
+<link href="./demo/cli.css" rel="stylesheet"></link>
+<div class="demo-panel">
+    <div>
+        <div><b>Emulator</b></div>
+        <div class="demo-pages">
+            <div id="static" onclick="document.location.href='./?static'">Static</div>
+            <div id="dynamic" onclick="document.location.href='./?dynamic'">Dynamic</div>
+        </div>
+    </div>
+    <div class="zoom" id="adj">
+        <div>Zoom:</div>
+        <div title="Zoom Out" onclick="zoom( -1 )">-</div>
+        <div id="zoomlvl"></div>
+        <div title="Zoom In" onclick="zoom( 1 )">+</div>
+    </div>
+</div>
+<div>
+<div class="demo">
+    <div>
+        <div id="pixy"></div>
+    </div>
+</div>
+</div>
+<script>
+var container = document.getElementById('pixy'),
+    zoomlvl = document.getElementById('zoomlvl'),
+    pagelinks = document.getElementsByClassName('demo-pages')[0].children,
+    zm,
+    pixy,
+    pages = {
+        dynamic: {
+            height: 130,
+            width: 220
+        },
+        static: {
+            height: 240,
+            width: 360
+        },
+        large: {
+            height: 1050,
+            width: 1400
+        }
+    }
+function makePixy(page){
+    pixy && pixy.zoom(1)
+    zm = 1.5
+    if (pages[page].width > 480)
+        zm = 0.25
+    else if (screen.width < 630 && screen.width > 460)
+        zm = 1
+    else if (screen.width <= 460)
+        zm = 0.5
+    container.parentNode.parentNode.parentNode.style.height = (pages[page].height * zm + 20) + 'px'
+    pixy = new PixyBrowser( {
+        callback: function() {
+            zoom(0)
+            this.debug()
+        },
+        container: container,
+        url: './demo/' + page + '.html',
+        height: pages[page].height,
+        width: pages[page].width,
+        type: page === 'large' ? 'canvas' : 'matrix'
+    } )
+    for (let a = 0, an = pagelinks.length; a < an; a += 1)
+        pagelinks[a].className = 'demo-pages off'
+    document.getElementById(page).className = 'demo-pages on'
+}
+function zoom(dir){
+    if (zm < 0.75 && dir === -1)
+        return
+    zm = zm + dir / 2
+    zoomlvl.innerText = (zm * 100) + '%'
+    pixy.zoom(zm)
+    container.parentNode.parentNode.parentNode.style.height = (container.offsetHeight + 20) + 'px'
+}
+let page = window.location.href.split('?')[1] || 'static'
+if (!pages[page])
+    page = 'static'
+makePixy(page)
+</script>

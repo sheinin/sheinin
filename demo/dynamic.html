@@ -1,0 +1,263 @@
+<HTML>
+  <HEAD>
+    <STYLE>
+      .dash {
+        border-bottom:1px solid #889;
+      }
+      .dial {
+        background-color: #445;
+        border:1px solid #889;
+        border-bottom: 1px solid #445;
+        border-right:0;
+        color: #aab;
+        font-family: pixel;
+        padding: 4px;
+        width: 17px;
+      }
+      .guage {
+        background-color: #112;
+        border:1px solid #889;
+        border-bottom: 1px solid #112;
+        border-left:0;
+        color: #bbc;
+        font-family: pixel;
+        height: 6px;
+        padding: 4px;
+        width: 25px;
+      }
+      .header {
+        background-color: #aba;
+        color: #232;
+        font-family: small;
+        margin-bottom:2px;
+        padding: 3px;
+        height: 10px;
+        width:220px;
+      }
+      .hgap {
+        height: 2px;
+      }
+      .inline {
+        display:inline-block;
+      }
+      .key {
+        background-color: #808a88;
+        border-left: 1px solid #404a48;
+        color: #d0dad8;
+        font-family: tiny;
+        height: 8px;
+        padding: 2px;
+        width: 5px;
+      }
+      .mode {
+        background-color: #4a4e4f;
+        color: #d0dad8;
+        font-family: tiny;
+        height: 8px;
+        padding: 3px;
+        width: 10px;
+      }
+      .stat {
+        background-color:#000;
+        padding-left:5px;
+        padding-right:2px;
+        padding-top: 3px;
+        width: 10px;
+      }
+      .tick {
+        background-color:#000;
+        border:1px solid #585e5a;
+      }
+      .trgt {
+        color: #a0a4aa;
+        font-family: pixel;
+        padding: 2px;
+        height: 6px;
+        width: 28px;
+      }
+      .trgta {
+        width: 20px;
+      }
+      .trgtb {
+        width: 13px;
+      }
+      .trgtr {
+        border-right: 1px solid #404a48;
+        width: 9px;
+      }
+      .val {
+        background-color: #10181a;
+        border-bottom: 1px solid #404a48;
+        color: #b0b8ba;
+        font-family: tiny;
+        height: 7px;
+        padding: 2px;
+        width: 17px;
+      }
+      .vgap{
+        width: 2px;
+      }
+      .wpn {
+        width: 27px;
+      }
+    </STYLE>
+    <SCRIPT>
+      var that = window.pixy || this
+      function PixyDemo() {
+        this.elements = {}
+        !'alt,clb,grv,mch,spd,thr,trgt,trgta,trgth,trgtr,trgts,mode,stat,weapon,canvas'
+          .split(',')
+          .map(function(id) {
+            this.elements[id] = that.document.getElementById(id)
+          }, this)
+        this.currentFrame = 0
+        this.currentChunk = -1
+        this.totalFrames = 0
+        this.totalChunks = 4
+        this.videoURL = 'http://0.0.0.0:8000/vid'
+        this.playing = false
+        this.play()
+        window.pixy && (pixy.window.onclick = this.play.bind(this))
+      }
+      PixyDemo.prototype.loading = function(i) {
+        i = i || 0
+        var ar = [[65, 30], [77, 30], [77, 42], [65, 42]],
+            col = ['#888','#666' ,'#333', '#111']                            
+        for (var a = 0, an = ar.length; a < an; a += 1) {
+          var o = {}
+          o[col[( a + i ) % an]] = this.square(ar[a])
+          this.elements.canvas.render(o)
+        }
+        i += 1
+        i %= ar.length
+        this.loadtimer = setTimeout(this.loading.bind(this, i), 250)
+      }
+      PixyDemo.prototype.loadChunk = function(chunk) {
+        if (chunk > this.totalChunks)
+          return
+        var req = new XMLHttpRequest()
+        if (this.currentFrame === this.totalFrames)
+          !this.loadtimer && this.loading()
+        req.open('GET', this.videoURL + '/' + chunk + '.json')
+        req.onreadystatechange = function() {
+          if (req.readyState == 4 && req.status == 200) {
+            clearTimeout(this.loadtimer)
+            this.buffer = {
+              data: JSON.parse(req.responseText),
+              chunk: chunk
+            }
+            if (!this.frames)
+              this.timer = setTimeout(this.reel.bind(this), 1000)
+            }
+        }.bind(this)
+        req.send()
+      }
+      PixyDemo.prototype.reel = function() {
+        this.frames && this.playing && this.showFrame(this.frames[this.currentFrame++ - 1])
+        if (this.currentFrame === this.totalFrames) {
+          var chunk = this.currentChunk + 1
+          if (chunk > this.totalChunks)
+            this.play()
+          else if (this.buffer && this.buffer.chunk === chunk) {
+            this.frames = this.buffer.data
+            this.totalFrames = this.frames.length
+            this.currentChunk = this.buffer.chunk
+            this.currentFrame = 0
+            this.buffer = null
+            this.timer = setTimeout(this.reel.bind(this), 1)
+            this.loadChunk(this.currentChunk + 1)
+          } else 
+            this.loadChunk(chunk)
+        } else
+          this.timer = setTimeout(this.reel.bind(this), 1000)
+      }
+      PixyDemo.prototype.showFrame = function(f) {
+        var slctr = {
+          canvas: function(f) {this.elements.canvas.render(f)},
+          status: function(f) {
+            var ico = {
+              ARM: {'#080':this.square([0,0], 7)},
+              LOCK: {'#aa0':{0:[3],1:[2,3,4],2:[1,2,3,4,5],3:[0,1,2,3,4,5,6],4:[1,2,3,4,5],5:[2,3,4],6:[3]}},
+              LNCH: {'#a00':{0:[2,3,4],1:[1,2,3,4,5],2:[0,1,2,3,4,5,6],3:[0,1,2,3,4,5,6],4:[0,1,2,3,4,5,6],5:[1,2,3,4,5],6:[2,3,4]}}
+            }
+            this.elements.stat.render({'#000':this.square([0,0], 7)})
+            this.elements.stat.render(ico[f])
+          },
+          default: function(f, o) {this.elements[o] && (this.elements[o].innerHTML = f)}
+        }
+        for (var o in f)
+          slctr[slctr[o] && o || 'default'].call(this, f[o], o)
+      }
+      PixyDemo.prototype.play = function() {
+        this.timer && clearTimeout(this.timer)
+        this.playing = !this.playing
+        this.reel()
+      }
+      PixyDemo.prototype.square = function(xy, hw) {
+        var s = {},
+            x = xy[0],
+            y = xy[1]
+        hw = hw || 10
+        for (var a = y, an = hw + y; a < an; a += 1)
+          for (var b = x, bn = hw + x; b < bn; b += 1)
+            (s[a] = s[a] || []).push(b)
+        return s
+      }
+      window.addEventListener('load', function() {
+        //if (!pix)pix = 
+        new PixyDemo()
+      })
+    </SCRIPT>
+  </HEAD>
+  <BODY>
+    <DIV class="header">PiXY Browser DEMO</DIV>
+    <DIV class="inline">
+      <DIV>
+        <DIV class="inline dial">CLB</DIV>
+        <DIV class="inline guage" id="clb"></DIV>
+      </DIV>
+      <DIV>
+        <DIV class="inline dial">ALT</DIV>
+        <DIV class="inline guage" id="alt"></DIV>
+      </DIV>
+      <DIV>
+        <DIV class="inline dial">SPD</DIV>
+        <DIV class="inline guage" id="spd"></DIV>
+      </DIV>
+      <DIV>
+        <DIV class="inline dial">THR</DIV>
+        <DIV class="inline guage" id="thr"></DIV>
+      </DIV>
+      <DIV>
+        <DIV class="inline dial">MCH</DIV>
+        <DIV class="inline guage" id="mch"></DIV>
+      </DIV>
+      <DIV>
+        <DIV class="inline dial dash">GRV</DIV>
+        <DIV class="inline guage dash" id="grv"></DIV>
+      </DIV>
+    </DIV>
+    <DIV class="inline vgap"></DIV>
+    <DIV class="inline">
+      <CANVAS height="96" width="158" id="canvas"></CANVAS>
+    </DIV>
+    <DIV class="hgap"></DIV>    
+    <DIV class="inline tick">
+      <DIV class="inline trgt" id="trgt"></DIV>
+      <DIV class="inline key">S:</DIV>
+      <DIV class="inline val trgtb" id="trgts"></DIV>
+      <DIV class="inline key">H:</DIV>
+      <DIV class="inline val trgtb" id="trgth"></DIV>
+      <DIV class="inline key">A:</DIV>
+      <DIV class="inline val trgta" id="trgta"></DIV>
+      <DIV class="inline key">R:</DIV>
+      <DIV class="inline val trgtr" id="trgtr"></DIV>
+    </DIV>
+    <DIV class="inline stat">
+      <CANVAS height="10" width="10" id="stat"></CANVAS>
+    </DIV>
+    <DIV class="inline mode" id="mode"></DIV>
+    <DIV class="inline mode vgap">:</DIV>
+    <DIV class="inline mode wpn" id="weapon"></DIV>    
+  </BODY>
+</HTML>

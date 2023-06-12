@@ -1,0 +1,110 @@
+.tools {
+  height:auto;
+  margin-top:20px !important;
+  text-align: left;
+}
+.tools > div:first-child {
+  background-color: #e6e6e6;
+  height: inherit;
+  display: flex;
+  padding: 2px;
+  white-space:nowrap;
+}
+.tools > div:first-child > div {
+  background-color: #ededed;
+  border: 1px solid #eaeaea;
+  display: inline-block;
+  padding-left:10px;
+  overflow: auto;
+  width: 100%;
+}
+#tools > div:last-child > div {
+  border: 0px;
+  padding-left:10px;
+  font-size:0.8em;
+}
+#tools {
+  height:300px;
+}
+#tools > div:first-child {
+  padding: 0px;
+}
+#tools > div:first-child > div {
+  background-color: #FFF;
+  padding-left:0px;
+}
+#tools > div:first-child > div:first-child {
+  font-family: monospace;
+  font-size:0.9em;
+  margin-right:2px;
+  width: 60%;
+}
+#tools > div:first-child > div:first-child > div:first-child {
+  padding-left: 0px !important;
+}
+#tools > div:first-child > div:last-child {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size:0.7em;
+  margin-left: 2px;
+  width: 40%;
+}
+#tools > div:last-child {
+  height: inherit;
+  display: flex;
+  white-space:nowrap;
+}
+#tools > div:last-child > div {
+  background-color: #FFF;
+  display: inline-block;
+  overflow: auto;
+}
+.node {
+  display:block;
+  padding-left:10px;
+}
+.node > div:first-child, .node div:nth-last-child(2) {
+  display:inline-block;
+  margin-right:3px;
+  width:10px;
+}
+.node > div:nth-child(2), .node > div:last-child {
+  cursor:pointer; 
+  display:inline-block;
+}
+.node > div:nth-child(2) > span:first-child, .node > div:nth-child(2) > span:last-child, .node > div:last-child > span:first-child, .node > div:last-child > span:last-child {
+  color:rgb(168,148,166);
+}
+.node > div:nth-child(2) > span:nth-child(2), .node > div:last-child > span:nth-child(2) {
+  color:rgb(157,66,155);
+}
+.pos {
+  border-collapse: collapse;
+  width: 100%;
+}
+.pos td, .pos th {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+.pos th {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  text-align: center;
+  background-color: #222;
+  color: white;
+}
+.pos tr > th:first-child {
+  background-color: #fff;
+}
+.css {
+  margin-top: 10px;
+  width: 100%;
+}
+.css tr > td:first-child {
+  color:rgb(200,0,0);
+}
+.css tr > td:first-child span {
+  color:rgb(34,34,34);
+}
+.css tr > td:last-child {
+  color:rgb(34,34,34);
+}

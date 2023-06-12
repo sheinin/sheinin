@@ -1,0 +1,296 @@
+.bt {
+    padding-left: 90px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+    width: 120px;
+}
+.bt > div {
+    display: block;
+	position: relative;
+}
+.bt > div:first-child > div {
+    left: -70px;
+}
+.btri {
+    position: relative;
+    z-index: 1;
+}
+.btri > div {
+    position: absolute;
+}
+.btri > div:first-child {
+    width: 0px;
+    height: 0px;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left:25px solid blue;
+}
+.btri > div:nth-child(2) {
+    width: 0px;
+    height: 0px;
+    top: 12px;
+    left: 4px;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    border-left: 11px solid #dadada;
+}
+.bt > div:nth-child(2) > div:first-child > div:first-child {
+    top: 20px;
+    left: 0px;
+}
+.bt > div:nth-child(2) > div:first-child > div:last-child {
+    top: 30px;
+    left: 0px;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid #dadada;
+}
+.bt > div:nth-child(2) > div:nth-child(2) > div:first-child {
+    top: 1px;
+    left: 20px;
+}
+.bt > div:nth-child(2) > div:nth-child(2) > div:last-child {
+    top: 15px;
+    left: 26px;
+}
+.bt > div:nth-child(2) > div:last-child > div:first-child {
+    top: 39px;
+    left: 20px;
+}
+.bt > div:nth-child(2) > div:last-child > div:last-child {
+    top: 54px;
+    left: 26px;
+}
+.bt > div:nth-child(3) {
+    top:12px;
+	width: 120px;
+    height: 120px;
+    left: 37px;
+	margin: auto;
+}
+.bt > div:nth-child(3) > div {
+	position:absolute;
+	transition:background-color 0.2s ease-in-out;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.bt > div:nth-child(3) > div:first-child {
+	background-color:gray;
+	border-radius: 0 100% 0 0;
+    top:4px;
+	left:5px;
+    width:46%;
+	height:46%;
+}
+.bt > div:nth-child(3) > div:nth-child(2) {
+	background-color:#dadada;
+	border-radius: 0 100% 0 0;
+    top:4px;
+	left:0px;
+    width:47%;
+	height:47%;
+}
+.bt > div:nth-child(3) > div:nth-child(3) {
+	background-color:gray;
+	border-radius: 0 100% 0 0;
+    top:9px;
+	left:2px;
+    width:38%;
+	height:38%;
+}
+.bt > div:nth-child(3) > div:nth-child(4) {
+	background-color:#dadada;
+	border-radius: 0 100% 0 0;
+    top:10px;
+	left:-1px;
+    width:37%;
+	height:37%;
+}
+.bt > div:nth-child(3) > div:nth-child(5) {
+	background-color:gray;
+	border-radius: 0 100% 0 0;
+    top:15px;
+	left:0px;
+    width:29%;
+	height:29%;
+}
+.bt > div:nth-child(3) > div:nth-child(6) {
+	background-color:#dadada;
+	border-radius: 0 100% 0 0;
+    top:16px;
+	left:-2px;
+    width:27%;
+	height:27%;
+}
+.binary > div:first-child {
+    position: absolute;
+    top:35px;
+	left:-90px;
+    width:27%;
+	height:27%;
+}
+.binary > div:first-child > div {
+    border: 1px solid #000;
+    height: 15px;
+    position: absolute;
+    width: 10px;
+}
+.binary > div:first-child > div:first-child {
+    border-top: none;
+    border-right: none;
+}
+.binary > div:first-child > div:nth-child(2) {
+    border-bottom: none;
+    border-right: none;
+    left: 11px;
+}
+.binary > div:first-child > div:nth-child(3) {
+    border-top: none;
+    border-right: none;
+    left: 22px;
+}
+.binary > div:first-child > div:nth-child(4) {
+    border-bottom: none;
+    left: 33px;
+}
+.binary > div:first-child > div:nth-child(5) {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    left: 44px;
+}
+
+.butterfly {
+    background-image: url("./butterfly.png");
+    background-position:center;
+    background-repeat: no-repeat;
+    color: #000;
+    display: table;
+    font-size:30px;
+}
+.butterfly > div {
+    display: table-cell;
+    vertical-align: top;
+}
+.butterfly > div:first-child {
+    background-color: wheat;
+    border: 2px dashed #222;
+    height:235px;
+    opacity: 0.4;
+    padding-top: 10px;
+    text-align:center;
+    width: 100px;
+}
+.butterfly > div:last-child {
+    width: 160px;
+}
+.butterfly > div:last-child > div:first-child {
+    background-color: slategrey;
+    border: 2px dashed #222;
+    border-left: 0px solid #000;
+    border-bottom: 0px solid black;
+    height: 74px;
+    opacity: 0.4;
+    padding-top: 10px;
+    text-align: center;
+}
+.butterfly > div > div:last-child {
+    background-color:rosybrown;
+    border: 2px dashed #222;
+    border-left: 0px solid #000;
+    height: 104px;
+    opacity: 0.4;
+    padding-top: 55px;
+    padding-left: 70px;
+}
+
+.infographic {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.phone {
+    background-color: #EAEAEA;
+    border: 2px solid #444;
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+    width: 100px;
+}
+.phone > div:first-child {
+    background-color: #222;
+    border: 1px solid #222;
+    border-radius: 18%;
+    height: 5px;
+    margin: auto;
+    margin-top: 2;
+    width: 15px;
+}
+.phone > div:first-child > div {
+    background-color: #aaa;
+    border-radius: 100%;
+    height: 3px;
+    margin: auto;
+    margin-top: 1;
+    margin-right: 1;
+    width: 3px;
+}
+
+.phone > div:nth-child(2) {
+    background-color: #fff;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #111;
+    height: 130px;
+    margin: 3px 5px 2px 5px;
+    width: 88px;
+}
+.phone > div:last-child {
+    background-color: gray;
+    border: 1px solid #111;
+    border-radius: 100%;
+    height: 10px;
+    margin: auto;
+    margin-bottom: 2px;
+    width: 10px;
+}
+
+
+.phone1 {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    margin: auto;
+    margin-right: 0px;
+    margin-top: 5px;
+    width: 160px;
+}
+.phone1 > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+.phone1 > div:first-child {
+    height: 15px;
+    margin: auto;
+    margin-left: 2px;
+    width: 5px;
+}
+.phone1 > div:nth-child(2) {
+    height: 88px;
+    margin: 5px 2px 5px 2px;
+    width: 130px;
+}
+.phone1 > div:last-child {
+    margin-bottom: auto;
+    margin-right: 2px;
+    
+}
+
+@media screen and ( min-width: 128px ) and ( max-width: 780px ) {
+  .infographic {
+      flex-direction: column;
+  }
+}
