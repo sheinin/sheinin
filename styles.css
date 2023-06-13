@@ -182,7 +182,8 @@ h4 {
   z-index:4;
 }
 .scrshot {
-  margin-top:10px !important;
+  display: inline-block;
+  margin-top: 0px !important;
   text-align: center;
 }
 .scrshot > div > div {

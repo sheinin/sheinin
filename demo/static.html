@@ -34,7 +34,7 @@
         background-color: rgb(168, 194, 128);
         color: #073516;
         font-family: small;
-        height: 42px;
+        height: 102px;
         padding-left: 2px;
         padding-top: 60px;
         width: 56px;
@@ -42,7 +42,7 @@
     </STYLE>
     <SCRIPT>
       var that = window.pixy || this,
-          activeDiv = 'main'
+          activeDiv = 'broadcast'
       function click(id){
         that.document.getElementById(activeDiv).className = 'menu'
         activeDiv = id
@@ -54,30 +54,21 @@
   <BODY>
     <DIV class="header">PiXY Browser DEMO</DIV>
     <DIV class="inline">
-      <DIV class="menu active" onclick="click('main')" id="main">
+      <DIV class="menu active" onclick="click('broadcast')" id="broadcast">
         Main
       </DIV>
-      <DIV class="menu" onclick="click('about')" id="about">
+      <DIV class="menu" onclick="click('android')" id="android">
         About
       </DIV>
-      <DIV class="menu" onclick="click('android')" id="android">
-        Android
-      </DIV>
-      <DIV class="menu" onclick="click('browser')" id="browser">
+      <DIV class="menu" onclick="click('about')" id="about">
         Browser
       </DIV>
-      <DIV class="menu" onclick="click('bluetooth')" id="bluetooth">
-        Bluetooth
-      </DIV>
-      <DIV class="menu" onclick="click('broadcast')" id="broadcast">
-        Broadcast
-      </DIV>
       <DIV class="copy">
-        js2dx.com
+        PiXY
       </DIV>
     </DIV>
     <DIV class="inline img">
-      <IMG src="./demo/main_300x225.json" height="225" width="300" id="image"></IMG>
+      <IMG src="./demo/broadcast_300x225.json" height="225" width="300" id="image"></IMG>
     </DIV>
   </BODY>
 </HTML>

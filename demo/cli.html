@@ -1,7 +1,7 @@
 <link href="./demo/cli.css" rel="stylesheet"></link>
 <div class="demo-panel">
     <div>
-        <div><b>Emulator</b></div>
+        <h3><b>Emulator</b></h3>
         <div class="demo-pages">
             <div id="static" onclick="document.location.href='./?static'">Static</div>
             <div id="dynamic" onclick="document.location.href='./?dynamic'">Dynamic</div>
@@ -35,10 +35,6 @@ var container = document.getElementById('pixy'),
         static: {
             height: 240,
             width: 360
-        },
-        large: {
-            height: 1050,
-            width: 1400
         }
     }
 function makePixy(page){

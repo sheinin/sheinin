@@ -1,6 +1,6 @@
 .demo-pages {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   padding-top: 15px;
 }
 .demo-pages > div {
@@ -8,7 +8,7 @@
   cursor: pointer;
   display: inline-block;
   margin-right: 5px;
-  padding: 4px;
+  padding: 8px;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -33,9 +33,6 @@
   color: #fff;
 }
 .demo-panel {
-    background-color: #ddd;
-    border: 1px solid #ccc;
-    border-radius: 1%;
     color:#111;
     display:flex;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
