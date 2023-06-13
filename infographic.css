@@ -206,6 +206,7 @@
 }
 
 .infographic {
+    margin-top: 22px !important;
     display: flex;
     flex-direction: row;
     align-items: center;
