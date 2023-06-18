@@ -57,7 +57,7 @@
       </div>
       <br>
       <h3>Server</h3>
-      <p>PiXY server is a process that transmits the web page bitmap to Bluetooth-enabled devices.</p>
+      <p>PiXY server transmits web page view rendered as a bitmap to Bluetooth-enabled devices.</p>
       <div class="tools">
         <div>
           <div style="width:100%;">
@@ -203,13 +203,13 @@ npm install pixy-browser
         <div>
           <div><pre style='color:#000000;'><span style='color:#800000; font-weight:bold; '>var</span> callback <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>{</span><span style='color:#800000; font-weight:bold; '>alert</span><span style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span style='color:#0000e6; '>PiXY loaded</span><span style='color:#800000; '>'</span><span style='color:#808030; '>)</span><span style='color:#800080; '>}</span><span style='color:#808030; '>,</span>
     container <span style='color:#808030; '>=</span> document<span style='color:#808030; '>.</span>getElementById<span style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span style='color:#0000e6; '>id</span><span style='color:#800000; '>'</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span>
-    url <span style='color:#808030; '>=</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>http://visualdatasynthesis.com.com/static.html</span><span style='color:#800000; '>'</span>
+    url <span style='color:#808030; '>=</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>http://my.site/static.html</span><span style='color:#800000; '>'</span>
 
 <span style='color:#800000; font-weight:bold; '>var</span> pixy <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> PixyBrowser<span style='color:#808030; '>(</span><span style='color:#800080; '>{</span>
     callback<span style='color:#800080; '>:</span> callback<span style='color:#808030; '>,</span>       <span style='color:#696969; '>// callback function</span>
     container<span style='color:#800080; '>:</span> container<span style='color:#808030; '>,</span>     <span style='color:#696969; '>// container DOM element</span>
     url<span style='color:#800080; '>:</span> url<span style='color:#808030; '>,</span>                 <span style='color:#696969; '>// webpage URL</span>
-    type<span style='color:#800080; '>:</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>matrix|canvas</span><span style='color:#800000; '>"</span><span style='color:#808030; '>,</span>    <span style='color:#696969; '>// canvas for high width, height</span>
+    type<span style='color:#800080; '>:</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>matrix|canvas</span><span style='color:#800000; '>"</span><span style='color:#808030; '>,</span>    <span style='color:#696969; '>// canvas for large screens</span>
     height<span style='color:#800080; '>:</span> <span style='color:#008c00; '>240</span><span style='color:#808030; '>,</span>              <span style='color:#696969; '>// height in pixels</span>
     width<span style='color:#800080; '>:</span> <span style='color:#008c00; '>360</span>                <span style='color:#696969; '>// width in pixels</span>
 <span style='color:#800080; '>}</span><span style='color:#808030; '>)</span>
