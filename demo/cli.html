@@ -2,8 +2,8 @@
 <h3>Emulator</h3>
 <div class="demo-panel">
     <div class="demo-pages">
-        <div id="static" onclick="document.location.href='./?static'">Page A.</div>
-        <div id="dynamic" onclick="document.location.href='./?dynamic'">Page B.</div>
+        <div id="static" onclick="document.location.href='./?dynamic'">Page A.</div>
+        <div id="dynamic" onclick="document.location.href='./?static'">Page B.</div>
     </div>
     <div class="zoom" id="adj">
         <div></div>
@@ -61,7 +61,7 @@ function zoom(dir){
     pixy.zoom(zm)
     container.parentNode.parentNode.parentNode.style.height = (container.offsetHeight + 20) + 'px'
 }
-let page = window.location.href.split('?')[1] || 'static'
+let page = window.location.href.split('?')[1] || 'dynamic'
 if (!pages[page])
     page = 'static'
 makePixy(page)
