@@ -1,4 +1,6 @@
-### Hi there PiXY 👋
+### PiXY - a Multiscreen Browser
+
+
 
 <!--
 **sheinin/sheinin** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
